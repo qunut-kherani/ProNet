@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ProNet/static/css/main.fd943594.css",
+    "main.js": "/ProNet/static/js/main.ddfbb53e.js",
+    "index.html": "/ProNet/index.html",
+    "main.fd943594.css.map": "/ProNet/static/css/main.fd943594.css.map",
+    "main.ddfbb53e.js.map": "/ProNet/static/js/main.ddfbb53e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fd943594.css",
+    "static/js/main.ddfbb53e.js"
+  ]
+}
