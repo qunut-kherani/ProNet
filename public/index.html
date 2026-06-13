@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2D8C64" />
+    <meta name="description" content="ProNet – Professional Networking Web Application built with React.js and Firebase. Connect with professionals, find jobs, and grow your career." />
+    <meta name="keywords" content="ProNet, Professional Networking, Jobs, React, Firebase, LinkedIn" />
+    <meta name="author" content="Farhat" />
+    <meta property="og:title" content="ProNet – Professional Networking App" />
+    <meta property="og:description" content="Connect with professionals, find jobs, and grow your career on ProNet." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pronet-app.vercel.app" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ProNet – Professional Networking App" />
+    <meta name="twitter:description" content="Connect with professionals, find jobs, and grow your career." />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <title>ProNet</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Inter', 'Segoe UI', sans-serif; }
+      #root { min-height: 100vh; }
+      .initial-loader {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #F0F7F4;
+        gap: 16px;
+      }
+      .initial-loader-logo {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #2D8C64;
+        font-family: 'Inter', sans-serif;
+        letter-spacing: -1px;
+      }
+      .initial-loader-logo span { color: #6BAF92; }
+      .initial-loader-spinner {
+        width: 36px;
+        height: 36px;
+        border: 3px solid #DDEFE8;
+        border-top-color: #2D8C64;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run ProNet.</noscript>
+    <div id="root">
+      <div class="initial-loader">
+        <div class="initial-loader-logo">Pro<span>Net</span></div>
+        <div class="initial-loader-spinner"></div>
+      </div>
+    </div>
+  </body>
+</html>
