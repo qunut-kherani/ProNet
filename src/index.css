@@ -868,6 +868,21 @@ textarea { resize: vertical; }
   .messaging-layout { grid-template-columns: 1fr; }
   .convo-list { display: none; }
   .input-row { grid-template-columns: 1fr; }
+
+  /* Profile responsive & alignment fixes */
+  .profile-page { padding-bottom: 80px; }
+  .profile-avatar-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: -40px;
+  }
+  .profile-actions {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
 }
 @media (max-width: 480px) {
   .auth-box { padding: 1.5rem; }
