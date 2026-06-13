@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
 import Navbar from "../components/Navbar";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import {
   FiEdit2, FiMapPin, FiPhone, FiMail, FiGlobe,
   FiLinkedin, FiGithub, FiTwitter, FiPlus, FiCheck,
-  FiCamera, FiX, FiBriefcase, FiBook, FiDownload
+  FiCamera, FiX, FiBriefcase, FiBook, FiDownload, FiLogOut
 } from "react-icons/fi";
 
 const EMPTY_PROFILE = {
@@ -42,6 +44,49 @@ export default function Profile() {
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const user = auth.currentUser;
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    navigate("/");
+  };
+
+  const compressAndSave = (file, field) => {
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        let width = img.width;
+        let height = img.height;
+        
+        const MAX_WIDTH = field === "photoURL" ? 300 : 800;
+        const MAX_HEIGHT = field === "photoURL" ? 300 : 300;
+        
+        if (width > height) {
+          if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+          }
+        } else {
+          if (height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height;
+            height = MAX_HEIGHT;
+          }
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+        
+        const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.7);
+        saveAvatarDirectly(field, compressedDataUrl);
+      };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  };
 
   useEffect(() => {
     if (!user) return;
@@ -151,9 +196,7 @@ export default function Profile() {
                 onChange={e => {
                   const file = e.target.files?.[0];
                   if (!file) return;
-                  const reader = new FileReader();
-                  reader.onload = ev => saveAvatarDirectly("coverURL", ev.target.result);
-                  reader.readAsDataURL(file);
+                  compressAndSave(file, "coverURL");
                 }}
               />
             </label>
@@ -176,9 +219,7 @@ export default function Profile() {
                   onChange={e => {
                     const file = e.target.files?.[0];
                     if (!file) return;
-                    const reader = new FileReader();
-                    reader.onload = ev => saveAvatarDirectly("photoURL", ev.target.result);
-                    reader.readAsDataURL(file);
+                    compressAndSave(file, "photoURL");
                   }}
                 />
               </label>
@@ -191,6 +232,9 @@ export default function Profile() {
                 )}
                 <button className="btn-outline" onClick={() => openEdit("main")}>
                   <FiEdit2 /> Edit Profile
+                </button>
+                <button className="btn-outline" onClick={handleLogout} style={{ color: "#dc2626", borderColor: "#fecaca", marginLeft: 8 }}>
+                  <FiLogOut /> Logout
                 </button>
               </div>
             </div>
