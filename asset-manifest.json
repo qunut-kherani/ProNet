@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ProNet/static/css/main.fd943594.css",
-    "main.js": "/ProNet/static/js/main.ddfbb53e.js",
+    "main.js": "/ProNet/static/js/main.a8c443c9.js",
     "index.html": "/ProNet/index.html",
     "main.fd943594.css.map": "/ProNet/static/css/main.fd943594.css.map",
-    "main.ddfbb53e.js.map": "/ProNet/static/js/main.ddfbb53e.js.map"
+    "main.a8c443c9.js.map": "/ProNet/static/js/main.a8c443c9.js.map"
   },
   "entrypoints": [
     "static/css/main.fd943594.css",
-    "static/js/main.ddfbb53e.js"
+    "static/js/main.a8c443c9.js"
   ]
 }
